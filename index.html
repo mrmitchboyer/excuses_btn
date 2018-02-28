@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Excuses Btn</title>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <body>
+    <button>This is a button</button>
+    <h1>This is the excuse:</h1>
+    <h2>
+      <span>no excuse</span>
+    </h2>
+    <script type="text/javascript">
+      $("button").click(function(){
+        $.get("https://gist.githubusercontent.com/mrmitchboyer/ff0a44ab9662073770d32723d3a497cc/raw/1e92c67168a511628cc6c4b154df1dc47c510599/excuses.json", function(data){
+          var results = jQuery.parseJSON(data);
+          var randomExcuse  = results.excuses[Math.floor(Math.random()*results.excuses.length)];
+          $("h2 span").text(randomExcuse);
+        });
+      });
+    </script>
+  </body>
+</html>
